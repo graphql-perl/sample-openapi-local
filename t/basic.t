@@ -4,6 +4,6 @@ use Test::More;
 use Test::Mojo;
 
 my $t = Test::Mojo->new('MyApp');
-$t->get_ok('/')->status_is(200)->content_like(qr/Mojolicious/i);
+$t->post_ok('/api/echo', json =>{i=>"work"})->json_is({i=>"work"});
 
 done_testing();
