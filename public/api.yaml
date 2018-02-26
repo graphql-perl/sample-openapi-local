@@ -19,3 +19,37 @@ paths:
           description: Echo response
           schema:
             type: object
+    get:
+      x-mojo-to: "echo#index"
+      operationId: echoGet
+      parameters:
+      - in: query
+        name: q
+        type: string
+      responses:
+        200:
+          description: Echo response
+          schema:
+            type: string
+  /user:
+    post:
+      x-mojo-to: "echo#index"
+      operationId: createUser
+      parameters:
+      - in: body
+        name: user
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: Created User
+          schema:
+            $ref: "#/definitions/User"
+definitions:
+  User:
+    type: object
+    properties:
+      name:
+        type: string
+      email:
+        type: string
